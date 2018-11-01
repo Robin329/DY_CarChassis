@@ -1,0 +1,254 @@
+###############################################################################
+#
+# IAR ELF Linker V8.22.2.15995/W32 for ARM                08/Jun/2018  11:04:50
+# Copyright 2007-2018 IAR Systems AB.
+#
+#    Output file  =  D:\Desktop\MSP432\DY_CAR\Sonar_ctrl\Debug\Exe\empty.out
+#    Map file     =  D:\Desktop\MSP432\DY_CAR\Sonar_ctrl\Debug\List\empty.map
+#    Command line =  
+#        -f C:\Users\jrb\AppData\Local\Temp\EW5407.tmp
+#        (D:\Desktop\MSP432\DY_CAR\Sonar_ctrl\Debug\Obj\main.o
+#        D:\Desktop\MSP432\DY_CAR\Sonar_ctrl\Debug\Obj\Sonar.o
+#        D:\Desktop\MSP432\DY_CAR\Sonar_ctrl\Debug\Obj\startup_msp432e401y_ewarm.o
+#        D:\Desktop\MSP432\DY_CAR\Sonar_ctrl\Debug\Obj\system_msp432e401y.o -o
+#        D:\Desktop\MSP432\DY_CAR\Sonar_ctrl\Debug\Exe\empty.out --map
+#        D:\Desktop\MSP432\DY_CAR\Sonar_ctrl\Debug\List\empty.map --config
+#        D:\Desktop\MSP432\DY_CAR\Sonar_ctrl/empty_msp432e401y.icf
+#        c:/ti/simplelink_msp432e4_sdk_2_10_00_17/source/ti/display/lib/display.arm4f
+#        c:/ti/simplelink_msp432e4_sdk_2_10_00_17/source/ti/grlib/lib/iar/m4f/grlib.a
+#        c:/ti/simplelink_msp432e4_sdk_2_10_00_17/source/third_party/spiffs/lib/iar/m4f/spiffs.a
+#        c:/ti/simplelink_msp432e4_sdk_2_10_00_17/source/ti/drivers/lib/drivers_msp432e4.arm4f
+#        c:/ti/simplelink_msp432e4_sdk_2_10_00_17/source/third_party/fatfs/lib/iar/m4f/fatfs.a
+#        c:/ti/simplelink_msp432e4_sdk_2_10_00_17/source/ti/devices/msp432e4/driverlib/lib/iar/m4f/msp432e4_driverlib.a
+#        --silent --cpu=Cortex-M4F --redirect _Printf=_PrintfSmall --redirect
+#        _Scanf=_ScanfSmall --semihosting --entry __iar_program_start --vfe
+#        --text_out locale)
+#
+###############################################################################
+
+*******************************************************************************
+*** RUNTIME MODEL ATTRIBUTES
+***
+
+CppFlavor       = *
+__SystemLibrary = DLib
+__dlib_version  = 6
+
+
+*******************************************************************************
+*** HEAP SELECTION
+***
+
+The basic heap was selected because no calls to memory allocation
+functions were found in the application outside of system library
+functions, and there are calls to deallocation functions in the
+application.
+
+
+*******************************************************************************
+*** PLACEMENT SUMMARY
+***
+
+"A0":  place at 0x00000000 { ro section .intvec };
+"P1":  place in [from 0x00000000 to 0x000fffff] { ro };
+define block CSTACK with size = 4K, alignment = 8 { };
+define block PROC_STACK with size = 0M, alignment = 8 { };
+define block HEAP with size = 8K, alignment = 8 { };
+"P3":  place in [from 0x00000000 to 0x00000000] |
+                [from 0x20000000 to 0x2003ffff] {
+          rw, block CSTACK, block PROC_STACK, block HEAP };
+do not initialize { section .noinit };
+initialize by copy { rw };
+
+No sections matched the following patterns:
+
+  ro section application_specific_ro  in "P2|P4"
+  rw section application_specific_rw  in "P2|P4"
+
+
+  Section            Kind        Address   Size  Object
+  -------            ----        -------   ----  ------
+"A0":                                     0x208
+  .intvec            const    0x00000000  0x208  startup_msp432e401y_ewarm.o [1]
+                            - 0x00000208  0x208
+
+"P1":                                     0xb3c
+  .text              ro code  0x00000208  0x498  sysctl_MSP432E411Y.obj [5]
+  .text              ro code  0x000006a0  0x254  Sonar.o [1]
+  .text              ro code  0x000008f4   0x48  FltToDbl.o [4]
+  .text              ro code  0x0000093c  0x246  DblDiv.o [4]
+  .text              ro code  0x00000b84   0x68  DblToFlt.o [4]
+  .text              ro code  0x00000bec   0x2c  copy_init3.o [6]
+  .text              ro code  0x00000c18   0x28  data_init.o [6]
+  .text              ro code  0x00000c40   0x24  system_msp432e401y.o [1]
+  .text              ro code  0x00000c64   0x22  fpinit_M.o [4]
+  .iar.init_table    const    0x00000c88   0x14  - Linker created -
+  .text              ro code  0x00000c9c   0x20  main.o [1]
+  .text              ro code  0x00000cbc   0x1e  cmain.o [6]
+  .text              ro code  0x00000cda    0x4  low_level_init.o [3]
+  .text              ro code  0x00000cde    0x4  exit.o [3]
+  .text              ro code  0x00000ce4    0xa  cexit.o [6]
+  .text              ro code  0x00000cf0   0x14  exit.o [7]
+  .text              ro code  0x00000d04    0xe  startup_msp432e401y_ewarm.o [1]
+  .text              ro code  0x00000d12    0xc  cstartup_M.o [6]
+  .rodata            const    0x00000d1e    0x0  copy_init3.o [6]
+  Initializer bytes  const    0x00000d20   0x24  <for P3 s0>
+                            - 0x00000d44  0xb3c
+
+"P3", part 1 of 2:                         0x24
+  P3 s0                       0x20000000   0x24  <Init block>
+    .data            inited   0x20000000    0x4  system_msp432e401y.o [1]
+    .bss             inited   0x20000004    0x4  main.o [1]
+    .bss             inited   0x20000008    0x4  Sonar.o [1]
+    .bss             inited   0x2000000c    0x4  Sonar.o [1]
+    .bss             inited   0x20000010    0x4  Sonar.o [1]
+    .bss             inited   0x20000014    0x4  Sonar.o [1]
+    .bss             inited   0x20000018    0x4  Sonar.o [1]
+    .bss             inited   0x2000001c    0x4  Sonar.o [1]
+    .bss             inited   0x20000020    0x1  Sonar.o [1]
+                            - 0x20000024   0x24
+
+"P3", part 2 of 2:                        0x400
+  .noinit            uninit   0x20000024  0x400  startup_msp432e401y_ewarm.o [1]
+                            - 0x20000424  0x400
+
+
+*******************************************************************************
+*** INIT TABLE
+***
+
+          Address     Size
+          -------     ----
+Copy (__iar_copy_init3)
+    1 source range, total size 0x24 (109% of destination):
+          0x00000d20  0x24
+    1 destination range, total size 0x21:
+          0x20000000  0x21
+
+
+
+*******************************************************************************
+*** MODULE SUMMARY
+***
+
+    Module                       ro code  ro data  rw data
+    ------                       -------  -------  -------
+D:\Desktop\MSP432\DY_CAR\Sonar_ctrl\Debug\Obj: [1]
+    Sonar.o                          596       25       25
+    main.o                            32        4        4
+    startup_msp432e401y_ewarm.o       14      520    1 024
+    system_msp432e401y.o              36        4        4
+    ------------------------------------------------------
+    Total:                           678      553    1 057
+
+command line: [2]
+    ------------------------------------------------------
+    Total:
+
+dl7M_tlf.a: [3]
+    exit.o                             4
+    low_level_init.o                   4
+    ------------------------------------------------------
+    Total:                             8
+
+m7M_tls.a: [4]
+    DblDiv.o                         582
+    DblToFlt.o                       104
+    FltToDbl.o                        72
+    fpinit_M.o                        34
+    ------------------------------------------------------
+    Total:                           792
+
+msp432e4_driverlib.a: [5]
+    sysctl_MSP432E411Y.obj         1 176
+    ------------------------------------------------------
+    Total:                         1 176
+
+rt7M_tl.a: [6]
+    cexit.o                           10
+    cmain.o                           30
+    copy_init3.o                      44
+    cstartup_M.o                      12
+    data_init.o                       40
+    ------------------------------------------------------
+    Total:                           136
+
+shb_l.a: [7]
+    exit.o                            20
+    ------------------------------------------------------
+    Total:                            20
+
+    Gaps                               6        2
+    Linker created                             25
+----------------------------------------------------------
+    Grand Total:                   2 816      580    1 057
+
+
+*******************************************************************************
+*** ENTRY LIST
+***
+
+Entry                      Address   Size  Type      Object
+-----                      -------   ----  ----      ------
+.iar.init_table$$Base   0x00000c88          --   Gb  - Linker created -
+.iar.init_table$$Limit  0x00000c9c          --   Gb  - Linker created -
+?main                   0x00000cbd         Code  Gb  cmain.o [6]
+Default_Handler         0x00000d05    0x2  Code  Lc  startup_msp432e401y_ewarm.o [1]
+Distance                0x00000879   0x20  Code  Gb  Sonar.o [1]
+Region$$Table$$Base     0x00000c88          --   Gb  - Linker created -
+Region$$Table$$Limit    0x00000c9c          --   Gb  - Linker created -
+SysCtlClockFreqSet      0x00000209  0x262  Code  Gb  sysctl_MSP432E411Y.obj [5]
+SystemCoreClock         0x20000000    0x4  Data  Gb  system_msp432e401y.o [1]
+SystemInit              0x00000c41   0x14  Code  Gb  system_msp432e401y.o [1]
+TIMER2B_IRQHandler      0x000006cf   0xbe  Code  Gb  Sonar.o [1]
+TIMER2B_IRQHandler::temp_cnt1
+                        0x20000018    0x4  Data  Lc  Sonar.o [1]
+TIMER2B_IRQHandler::temp_cnt1_2
+                        0x2000001c    0x4  Data  Lc  Sonar.o [1]
+TIMER3A_IRQHandler      0x000006a1   0x2e  Code  Gb  Sonar.o [1]
+Time_Count              0x20000014    0x4  Data  Gb  Sonar.o [1]
+Timer_init              0x0000078d   0xea  Code  Gb  Sonar.o [1]
+__aeabi_d2f             0x00000b85         Code  Gb  DblToFlt.o [4]
+__aeabi_ddiv            0x0000093d         Code  Gb  DblDiv.o [4]
+__aeabi_f2d             0x000008f5         Code  Gb  FltToDbl.o [4]
+__cmain                 0x00000cbd         Code  Gb  cmain.o [6]
+__exit                  0x00000cf1   0x14  Code  Gb  exit.o [7]
+__iar_copy_init3        0x00000bed   0x2c  Code  Gb  copy_init3.o [6]
+__iar_data_init3        0x00000c19   0x28  Code  Gb  data_init.o [6]
+__iar_init_vfp          0x00000c65         Code  Gb  fpinit_M.o [4]
+__iar_program_start     0x00000d13         Code  Gb  cstartup_M.o [6]
+__iar_systems$$module {Abs}
+                        0x00000001         Data  Gb  command line/config [2]
+__low_level_init        0x00000cdb    0x4  Code  Gb  low_level_init.o [3]
+__vector_table          0x00000000  0x208  Data  Gb  startup_msp432e401y_ewarm.o [1]
+_call_main              0x00000cc9         Code  Gb  cmain.o [6]
+_exit                   0x00000ce5         Code  Gb  cexit.o [6]
+_main                   0x00000cd7         Code  Gb  cmain.o [6]
+bSetEventFlag           0x20000020    0x1  Data  Gb  Sonar.o [1]
+count1                  0x2000000c    0x4  Data  Gb  Sonar.o [1]
+dis                     0x20000010    0x4  Data  Gb  Sonar.o [1]
+exit                    0x00000cdf    0x4  Code  Gb  exit.o [3]
+g_pppui32XTALtoVCO      0x000004b8  0x1b0  Data  Lc  sysctl_MSP432E411Y.obj [5]
+g_pui32VCOFrequencies   0x00000698    0x8  Data  Lc  sysctl_MSP432E411Y.obj [5]
+g_pui32Xtals            0x00000490   0x28  Data  Lc  sysctl_MSP432E411Y.obj [5]
+g_sXTALtoMEMTIM         0x00000668   0x30  Data  Lc  sysctl_MSP432E411Y.obj [5]
+main                    0x00000c9d   0x20  Code  Gb  main.o [1]
+systemClock             0x20000004    0x4  Data  Gb  main.o [1]
+systemStack             0x20000024  0x400  Data  Lc  startup_msp432e401y_ewarm.o [1]
+timer_cnt1              0x20000008    0x4  Data  Gb  Sonar.o [1]
+
+
+[1] = D:\Desktop\MSP432\DY_CAR\Sonar_ctrl\Debug\Obj
+[2] = command line
+[3] = dl7M_tlf.a
+[4] = m7M_tls.a
+[5] = msp432e4_driverlib.a
+[6] = rt7M_tl.a
+[7] = shb_l.a
+
+  2 816 bytes of readonly  code memory
+    580 bytes of readonly  data memory
+  1 057 bytes of readwrite data memory
+
+Errors: none
+Warnings: none

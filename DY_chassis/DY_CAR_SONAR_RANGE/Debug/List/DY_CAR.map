@@ -1,0 +1,418 @@
+###############################################################################
+#
+# IAR ELF Linker V8.22.2.15995/W32 for ARM                19/Jun/2018  20:08:37
+# Copyright 2007-2018 IAR Systems AB.
+#
+#    Output file  =  
+#        D:\Desktop\DY_chassis\DY_CAR_SONAR_RANGE\Debug\Exe\DY_CAR.out
+#    Map file     =  
+#        D:\Desktop\DY_chassis\DY_CAR_SONAR_RANGE\Debug\List\DY_CAR.map
+#    Command line =  
+#        -f C:\Users\jrb\AppData\Local\Temp\EW25AE.tmp
+#        (D:\Desktop\DY_chassis\DY_CAR_SONAR_RANGE\Debug\Obj\gpt.o
+#        D:\Desktop\DY_chassis\DY_CAR_SONAR_RANGE\Debug\Obj\main.o
+#        D:\Desktop\DY_chassis\DY_CAR_SONAR_RANGE\Debug\Obj\math.o
+#        D:\Desktop\DY_chassis\DY_CAR_SONAR_RANGE\Debug\Obj\PID.o
+#        D:\Desktop\DY_chassis\DY_CAR_SONAR_RANGE\Debug\Obj\pwm.o
+#        D:\Desktop\DY_chassis\DY_CAR_SONAR_RANGE\Debug\Obj\qei.o
+#        D:\Desktop\DY_chassis\DY_CAR_SONAR_RANGE\Debug\Obj\Sonar.o
+#        D:\Desktop\DY_chassis\DY_CAR_SONAR_RANGE\Debug\Obj\startup_msp432e401y_ewarm.o
+#        D:\Desktop\DY_chassis\DY_CAR_SONAR_RANGE\Debug\Obj\system_msp432e401y.o
+#        D:\Desktop\DY_chassis\DY_CAR_SONAR_RANGE\Debug\Obj\turn_ctrl.o
+#        D:\Desktop\DY_chassis\DY_CAR_SONAR_RANGE\Debug\Obj\UART.o -o
+#        D:\Desktop\DY_chassis\DY_CAR_SONAR_RANGE\Debug\Exe\DY_CAR.out --map
+#        D:\Desktop\DY_chassis\DY_CAR_SONAR_RANGE\Debug\List\DY_CAR.map
+#        --config
+#        D:\Desktop\DY_chassis\DY_CAR_SONAR_RANGE/DY_CAR_msp432e401y.icf
+#        c:/ti/simplelink_msp432e4_sdk_2_10_00_17/source/ti/display/lib/display.arm4f
+#        c:/ti/simplelink_msp432e4_sdk_2_10_00_17/source/ti/grlib/lib/iar/m4f/grlib.a
+#        c:/ti/simplelink_msp432e4_sdk_2_10_00_17/source/third_party/spiffs/lib/iar/m4f/spiffs.a
+#        c:/ti/simplelink_msp432e4_sdk_2_10_00_17/source/ti/drivers/lib/drivers_msp432e4.arm4f
+#        c:/ti/simplelink_msp432e4_sdk_2_10_00_17/source/third_party/fatfs/lib/iar/m4f/fatfs.a
+#        c:/ti/simplelink_msp432e4_sdk_2_10_00_17/source/ti/devices/msp432e4/driverlib/lib/iar/m4f/msp432e4_driverlib.a
+#        --silent --cpu=Cortex-M4F --redirect _Printf=_PrintfSmall --redirect
+#        _Scanf=_ScanfSmall --semihosting --entry __iar_program_start --vfe
+#        --text_out locale)
+#
+###############################################################################
+
+*******************************************************************************
+*** RUNTIME MODEL ATTRIBUTES
+***
+
+CppFlavor       = *
+__SystemLibrary = DLib
+__dlib_version  = 6
+
+
+*******************************************************************************
+*** HEAP SELECTION
+***
+
+The basic heap was selected because no calls to memory allocation
+functions were found in the application outside of system library
+functions, and there are calls to deallocation functions in the
+application.
+
+
+*******************************************************************************
+*** PLACEMENT SUMMARY
+***
+
+"A0":  place at 0x00000000 { ro section .intvec };
+"P1":  place in [from 0x00000000 to 0x000fffff] { ro };
+define block CSTACK with size = 4K, alignment = 8 { };
+define block PROC_STACK with size = 0M, alignment = 8 { };
+define block HEAP with size = 8K, alignment = 8 { };
+"P3":  place in [from 0x00000000 to 0x00000000] |
+                [from 0x20000000 to 0x2003ffff] {
+          rw, block CSTACK, block PROC_STACK, block HEAP };
+do not initialize { section .noinit };
+initialize by copy { rw };
+
+No sections matched the following patterns:
+
+  ro section application_specific_ro  in "P2|P4"
+  rw section application_specific_rw  in "P2|P4"
+
+
+  Section            Kind        Address    Size  Object
+  -------            ----        -------    ----  ------
+"A0":                                      0x208
+  .intvec            const    0x00000000   0x208  startup_msp432e401y_ewarm.o [1]
+                            - 0x00000208   0x208
+
+"P1":                                     0x2188
+  .text              ro code  0x00000208   0x4c8  sysctl_MSP432E411Y.obj [5]
+  .text              ro code  0x000006d0   0x398  PID.o [1]
+  .text              ro code  0x00000a68   0x2e0  Sonar.o [1]
+  .text              ro code  0x00000d48    0x48  FltToDbl.o [4]
+  .text              ro code  0x00000d90   0x246  DblDiv.o [4]
+  .text              ro code  0x00000fd8    0x68  DblToFlt.o [4]
+  .text              ro code  0x00001040   0x290  pwm.o [1]
+  .text              ro code  0x000012d0   0x270  qei.o [1]
+  .text              ro code  0x00001540   0x1b4  gpio_MSP432E411Y.obj [5]
+  .text              ro code  0x000016f4    0x4c  qei_MSP432E411Y.obj [5]
+  .text              ro code  0x00001740    0x84  interrupt_MSP432E411Y.obj [5]
+  .text              ro code  0x000017c4   0x1a2  DblMul.o [4]
+  .text              ro code  0x00001968   0x108  turn_ctrl.o [1]
+  .text              ro code  0x00001a70     0xc  uart_MSP432E411Y.obj [5]
+  .text              ro code  0x00001a7c   0x164  UART.o [1]
+  .text              ro code  0x00001be0   0x188  math.o [1]
+  .text              ro code  0x00001d68    0x66  ABImemset.o [6]
+  .text              ro code  0x00001dd0   0x174  iar_Stoulx.o [3]
+  .text              ro code  0x00001f44    0x58  memchr.o [6]
+  .text              ro code  0x00001f9c   0x1cc  gpt.o [1]
+  .text              ro code  0x00002168    0x1a  U32ToDbl.o [4]
+  .text              ro code  0x00002184    0x3a  DblToS32.o [4]
+  .text              ro code  0x000021c0    0x4c  main.o [1]
+  .text              ro code  0x0000220c    0x40  zero_init3.o [6]
+  .text              ro code  0x0000224c    0x2c  copy_init3.o [6]
+  .text              ro code  0x00002278    0x28  data_init.o [6]
+  .text              ro code  0x000022a0    0x24  system_msp432e401y.o [1]
+  .text              ro code  0x000022c4    0x22  fpinit_M.o [4]
+  .iar.init_table    const    0x000022e8    0x24  - Linker created -
+  .text              ro code  0x0000230c    0x1e  cmain.o [6]
+  .text              ro code  0x0000232a     0x4  low_level_init.o [3]
+  .text              ro code  0x0000232e     0x4  exit.o [3]
+  .text              ro code  0x00002334     0xa  cexit.o [6]
+  .text              ro code  0x00002340    0x14  exit.o [7]
+  .text              ro code  0x00002354     0xe  startup_msp432e401y_ewarm.o [1]
+  .text              ro code  0x00002362     0xc  cstartup_M.o [6]
+  .rodata            const    0x00002370     0x8  qei.o [1]
+  .rodata            const    0x00002378     0x8  UART.o [1]
+  .rodata            const    0x00002380     0x0  zero_init3.o [6]
+  .rodata            const    0x00002380     0x0  copy_init3.o [6]
+  Initializer bytes  const    0x00002380    0x10  <for P3 s0>
+                            - 0x00002390  0x2188
+
+"P3", part 1 of 3:                          0x10
+  P3 s0                       0x20000000    0x10  <Init block>
+    .data            inited   0x20000000     0x4  PID.o [1]
+    .data            inited   0x20000004     0x4  qei.o [1]
+    .data            inited   0x20000008     0x4  qei.o [1]
+    .data            inited   0x2000000c     0x4  system_msp432e401y.o [1]
+                            - 0x20000010    0x10
+
+"P3", part 2 of 3:                          0xd4
+  .bss               zero     0x20000010    0x5c  PID.o [1]
+  .bss               zero     0x2000006c     0x8  UART.o [1]
+  .bss               zero     0x20000074     0x8  UART.o [1]
+  .bss               zero     0x2000007c     0x4  gpt.o [1]
+  .bss               zero     0x20000080     0x4  gpt.o [1]
+  .bss               zero     0x20000084     0x4  gpt.o [1]
+  .bss               zero     0x20000088     0x4  gpt.o [1]
+  .bss               zero     0x2000008c     0x4  gpt.o [1]
+  .bss               zero     0x20000090     0x4  main.o [1]
+  .bss               zero     0x20000094     0x4  PID.o [1]
+  .bss               zero     0x20000098     0x4  PID.o [1]
+  .bss               zero     0x2000009c     0x4  PID.o [1]
+  .bss               zero     0x200000a0     0x4  PID.o [1]
+  .bss               zero     0x200000a4     0x4  pwm.o [1]
+  .bss               zero     0x200000a8     0x4  pwm.o [1]
+  .bss               zero     0x200000ac     0x4  qei.o [1]
+  .bss               zero     0x200000b0     0x4  qei.o [1]
+  .bss               zero     0x200000b4     0x4  qei.o [1]
+  .bss               zero     0x200000b8     0x4  qei.o [1]
+  .bss               zero     0x200000bc     0x4  qei.o [1]
+  .bss               zero     0x200000c0     0x4  Sonar.o [1]
+  .bss               zero     0x200000c4     0x4  Sonar.o [1]
+  .bss               zero     0x200000c8     0x4  Sonar.o [1]
+  .bss               zero     0x200000cc     0x4  Sonar.o [1]
+  .bss               zero     0x200000d0     0x4  Sonar.o [1]
+  .bss               zero     0x200000d4     0x4  Sonar.o [1]
+  .bss               zero     0x200000d8     0x4  turn_ctrl.o [1]
+  .bss               zero     0x200000dc     0x4  turn_ctrl.o [1]
+  .bss               zero     0x200000e0     0x1  qei.o [1]
+  .bss               zero     0x200000e1     0x1  UART.o [1]
+  .bss               zero     0x200000e2     0x1  UART.o [1]
+  .bss               zero     0x200000e3     0x1  UART.o [1]
+                            - 0x200000e4    0xd4
+
+"P3", part 3 of 3:                         0x400
+  .noinit            uninit   0x200000e4   0x400  startup_msp432e401y_ewarm.o [1]
+                            - 0x200004e4   0x400
+
+
+*******************************************************************************
+*** INIT TABLE
+***
+
+          Address     Size
+          -------     ----
+Zero (__iar_zero_init3)
+    1 destination range, total size 0xd4:
+          0x20000010  0xd4
+
+Copy (__iar_copy_init3)
+    1 source range, total size 0x10:
+          0x00002380  0x10
+    1 destination range, total size 0x10:
+          0x20000000  0x10
+
+
+
+*******************************************************************************
+*** MODULE SUMMARY
+***
+
+    Module                       ro code  ro data  rw data
+    ------                       -------  -------  -------
+D:\Desktop\DY_chassis\DY_CAR_SONAR_RANGE\Debug\Obj: [1]
+    PID.o                            920        4      112
+    Sonar.o                          736                24
+    UART.o                           356        8       19
+    gpt.o                            460                20
+    main.o                            76                 4
+    math.o                           392
+    pwm.o                            656                 8
+    qei.o                            624       16       29
+    startup_msp432e401y_ewarm.o       14      520    1 024
+    system_msp432e401y.o              36        4        4
+    turn_ctrl.o                      264                 8
+    ------------------------------------------------------
+    Total:                         4 534      552    1 252
+
+command line: [2]
+    ------------------------------------------------------
+    Total:
+
+dl7M_tln.a: [3]
+    exit.o                             4
+    iar_Stoulx.o                     372
+    low_level_init.o                   4
+    ------------------------------------------------------
+    Total:                           380
+
+m7M_tls.a: [4]
+    DblDiv.o                         582
+    DblMul.o                         418
+    DblToFlt.o                       104
+    DblToS32.o                        58
+    FltToDbl.o                        72
+    U32ToDbl.o                        26
+    fpinit_M.o                        34
+    ------------------------------------------------------
+    Total:                         1 294
+
+msp432e4_driverlib.a: [5]
+    gpio_MSP432E411Y.obj             436
+    interrupt_MSP432E411Y.obj        132
+    qei_MSP432E411Y.obj               76
+    sysctl_MSP432E411Y.obj         1 224
+    uart_MSP432E411Y.obj              12
+    ------------------------------------------------------
+    Total:                         1 880
+
+rt7M_tl.a: [6]
+    ABImemset.o                      102
+    cexit.o                           10
+    cmain.o                           30
+    copy_init3.o                      44
+    cstartup_M.o                      12
+    data_init.o                       40
+    memchr.o                          88
+    zero_init3.o                      64
+    ------------------------------------------------------
+    Total:                           390
+
+shb_l.a: [7]
+    exit.o                            20
+    ------------------------------------------------------
+    Total:                            20
+
+    Gaps                              14        4
+    Linker created                             36
+----------------------------------------------------------
+    Grand Total:                   8 512      592    1 252
+
+
+*******************************************************************************
+*** ENTRY LIST
+***
+
+Entry                      Address   Size  Type      Object
+-----                      -------   ----  ----      ------
+.iar.init_table$$Base   0x000022e8          --   Gb  - Linker created -
+.iar.init_table$$Limit  0x0000230c          --   Gb  - Linker created -
+?main                   0x0000230d         Code  Gb  cmain.o [6]
+Back                    0x00001993    0xe  Code  Gb  turn_ctrl.o [1]
+Buffer                  0x2000006c    0x8  Data  Gb  UART.o [1]
+Buffer_Out              0x20000074    0x8  Data  Gb  UART.o [1]
+CNT1                    0x20000080    0x4  Data  Gb  gpt.o [1]
+CNT2                    0x20000084    0x4  Data  Gb  gpt.o [1]
+COUNT                   0x200000bc    0x4  Data  Gb  qei.o [1]
+ControlCar              0x000019b1   0xac  Code  Gb  turn_ctrl.o [1]
+Count_Char              0x200000e2    0x1  Data  Gb  UART.o [1]
+Default_Handler         0x00002355    0x2  Code  Lc  startup_msp432e401y_ewarm.o [1]
+Delay_ms                0x00000a81   0x1a  Code  Gb  Sonar.o [1]
+Delay_us                0x00000a69   0x18  Code  Gb  Sonar.o [1]
+Distance                0x00000c9d   0x20  Code  Gb  Sonar.o [1]
+Float2Char              0x00001be1  0x188  Code  Gb  math.o [1]
+Forward                 0x00001969    0xe  Code  Gb  turn_ctrl.o [1]
+GPIOPadConfigSet        0x00001541  0x116  Code  Gb  gpio_MSP432E411Y.obj [5]
+GPIOPinConfigure        0x00001681   0x2c  Code  Gb  gpio_MSP432E411Y.obj [5]
+GPIOPinTypeQEI          0x0000165f   0x22  Code  Gb  gpio_MSP432E411Y.obj [5]
+GPIOPinWrite            0x00001657    0x8  Code  Gb  gpio_MSP432E411Y.obj [5]
+GPT_init                0x0000203b   0xe0  Code  Gb  gpt.o [1]
+IncPIDCalc_l            0x00000821  0x106  Code  Gb  PID.o [1]
+IncPIDCalc_r            0x00000929  0x106  Code  Gb  PID.o [1]
+IncPIDInit              0x000006d1  0x150  Code  Gb  PID.o [1]
+IntEnable               0x00001741   0x6a  Code  Gb  interrupt_MSP432E411Y.obj [5]
+Num                     0x200000e0    0x1  Data  Gb  qei.o [1]
+PWM0_0_IRQHandler       0x00001279   0x20  Code  Gb  pwm.o [1]
+PWM0_1_IRQHandler       0x00001259   0x20  Code  Gb  pwm.o [1]
+PWM_init                0x00001041  0x218  Code  Gb  pwm.o [1]
+QEI0_IRQHandler         0x0000133d  0x192  Code  Gb  qei.o [1]
+QEIConfigure            0x000016ff   0x10  Code  Gb  qei_MSP432E411Y.obj [5]
+QEIEnable               0x000016f5    0xa  Code  Gb  qei_MSP432E411Y.obj [5]
+QEIInit                 0x000012d1   0x6a  Code  Gb  qei.o [1]
+QEIIntClear             0x0000173b    0x6  Code  Gb  qei_MSP432E411Y.obj [5]
+QEIIntEnable            0x00001731    0xa  Code  Gb  qei_MSP432E411Y.obj [5]
+QEIVelocityConfigure    0x00001719   0x12  Code  Gb  qei_MSP432E411Y.obj [5]
+QEIVelocityEnable       0x0000170f    0xa  Code  Gb  qei_MSP432E411Y.obj [5]
+QEIVelocityGet          0x0000172b    0x6  Code  Gb  qei_MSP432E411Y.obj [5]
+Region$$Table$$Base     0x000022e8          --   Gb  - Linker created -
+Region$$Table$$Limit    0x0000230c          --   Gb  - Linker created -
+Sonar_Gen               0x00000cbd   0x2c  Code  Gb  Sonar.o [1]
+Stop                    0x000019a1    0xe  Code  Gb  turn_ctrl.o [1]
+SysCtlClockFreqSet      0x00000235  0x262  Code  Gb  sysctl_MSP432E411Y.obj [5]
+SysCtlDelay             0x0000022d    0x8  Code  Gb  sysctl_MSP432E411Y.obj [5]
+SysCtlPeripheralReady   0x00000209   0x24  Code  Gb  sysctl_MSP432E411Y.obj [5]
+SystemCoreClock         0x2000000c    0x4  Data  Gb  system_msp432e401y.o [1]
+SystemInit              0x000022a1   0x14  Code  Gb  system_msp432e401y.o [1]
+TIMER0A_IRQHandler      0x00001f9d   0x26  Code  Gb  gpt.o [1]
+TIMER1A_IRQHandler      0x00001fc3   0x78  Code  Gb  gpt.o [1]
+TIMER2B_IRQHandler      0x00000ab7   0xda  Code  Gb  Sonar.o [1]
+TIMER2B_IRQHandler::temp_cnt1
+                        0x200000d0    0x4  Data  Lc  Sonar.o [1]
+TIMER2B_IRQHandler::temp_cnt1_2
+                        0x200000d4    0x4  Data  Lc  Sonar.o [1]
+TIMER3A_IRQHandler      0x00000a9b   0x1c  Code  Gb  Sonar.o [1]
+Text_Count              0x200000e1    0x1  Data  Gb  UART.o [1]
+Timer_init              0x00000b91  0x10a  Code  Gb  Sonar.o [1]
+Turn_Left               0x00001977    0xe  Code  Gb  turn_ctrl.o [1]
+Turn_Right              0x00001985    0xe  Code  Gb  turn_ctrl.o [1]
+UART0_IRQHandler        0x00001a7d   0x8a  Code  Gb  UART.o [1]
+UARTBusy                0x00001a71    0xc  Code  Gb  uart_MSP432E411Y.obj [5]
+UARTSend                0x00001b07   0x20  Code  Gb  UART.o [1]
+__aeabi_d2f             0x00000fd9         Code  Gb  DblToFlt.o [4]
+__aeabi_d2iz            0x00002185         Code  Gb  DblToS32.o [4]
+__aeabi_ddiv            0x00000d91         Code  Gb  DblDiv.o [4]
+__aeabi_dmul            0x000017c5         Code  Gb  DblMul.o [4]
+__aeabi_f2d             0x00000d49         Code  Gb  FltToDbl.o [4]
+__aeabi_memset          0x00001d69         Code  Gb  ABImemset.o [6]
+__aeabi_ui2d            0x00002169         Code  Gb  U32ToDbl.o [4]
+__cmain                 0x0000230d         Code  Gb  cmain.o [6]
+__exit                  0x00002341   0x14  Code  Gb  exit.o [7]
+__iar_Memchr            0x00001f45         Code  Gb  memchr.o [6]
+__iar_Memset            0x00001d69         Code  Gb  ABImemset.o [6]
+__iar_Memset_word       0x00001d71         Code  Gb  ABImemset.o [6]
+__iar_Stoulx            0x00001dd1  0x114  Code  Gb  iar_Stoulx.o [3]
+__iar_copy_init3        0x0000224d   0x2c  Code  Gb  copy_init3.o [6]
+__iar_data_init3        0x00002279   0x28  Code  Gb  data_init.o [6]
+__iar_init_vfp          0x000022c5         Code  Gb  fpinit_M.o [4]
+__iar_program_start     0x00002363         Code  Gb  cstartup_M.o [6]
+__iar_systems$$module {Abs}
+                        0x00000001         Data  Gb  command line/config [2]
+__iar_zero_init3        0x0000220d   0x40  Code  Gb  zero_init3.o [6]
+__low_level_init        0x0000232b    0x4  Code  Gb  low_level_init.o [3]
+__vector_table          0x00000000  0x208  Data  Gb  startup_msp432e401y_ewarm.o [1]
+_call_main              0x00002319         Code  Gb  cmain.o [6]
+_exit                   0x00002335         Code  Gb  cexit.o [6]
+_main                   0x00002327         Code  Gb  cmain.o [6]
+atoi                    0x00001eeb    0x2  Code  Gb  iar_Stoulx.o [3]
+ch                      0x200000e3    0x1  Data  Gb  UART.o [1]
+ch_l                    0x200000d8    0x4  Data  Gb  turn_ctrl.o [1]
+ch_r                    0x200000dc    0x4  Data  Gb  turn_ctrl.o [1]
+count                   0x2000007c    0x4  Data  Gb  gpt.o [1]
+count1                  0x200000c8    0x4  Data  Gb  Sonar.o [1]
+digits                  0x00001ef4   0x28  Data  Lc  iar_Stoulx.o [3]
+dis                     0x200000cc    0x4  Data  Gb  Sonar.o [1]
+exit                    0x0000232f    0x4  Code  Gb  exit.o [3]
+g_pppui32XTALtoVCO      0x000004e8  0x1b0  Data  Lc  sysctl_MSP432E411Y.obj [5]
+g_pui32EnRegs           0x000017b0   0x14  Data  Lc  interrupt_MSP432E411Y.obj [5]
+g_pui32GPIOBaseAddrs    0x000016ac   0x48  Data  Lc  gpio_MSP432E411Y.obj [5]
+g_pui32VCOFrequencies   0x000006c8    0x8  Data  Lc  sysctl_MSP432E411Y.obj [5]
+g_pui32Xtals            0x000004c0   0x28  Data  Lc  sysctl_MSP432E411Y.obj [5]
+g_sXTALtoMEMTIM         0x00000698   0x30  Data  Lc  sysctl_MSP432E411Y.obj [5]
+g_ui32SysClock          0x20000090    0x4  Data  Gb  main.o [1]
+iError_l                0x20000094    0x4  Data  Gb  PID.o [1]
+iError_r                0x20000098    0x4  Data  Gb  PID.o [1]
+main                    0x000021c1   0x4c  Code  Gb  main.o [1]
+memchr                  0x00001f45         Code  Gb  memchr.o [6]
+ndigs                   0x00001f1c   0x28  Data  Lc  iar_Stoulx.o [3]
+pid_l                   0x200000ac    0x4  Data  Gb  qei.o [1]
+pid_r                   0x200000b0    0x4  Data  Gb  qei.o [1]
+pwm_pidl                0x20000004    0x4  Data  Gb  qei.o [1]
+pwm_pidr                0x20000008    0x4  Data  Gb  qei.o [1]
+pwm_val_l               0x200000a4    0x4  Data  Gb  pwm.o [1]
+pwm_val_r               0x200000a8    0x4  Data  Gb  pwm.o [1]
+sPID                    0x20000010   0x5c  Data  Lc  PID.o [1]
+s_l                     0x200000b4    0x4  Data  Gb  qei.o [1]
+s_r                     0x200000b8    0x4  Data  Gb  qei.o [1]
+speed                   0x20000088    0x4  Data  Gb  gpt.o [1]
+sptr                    0x20000000    0x4  Data  Lc  PID.o [1]
+systemStack             0x200000e4  0x400  Data  Lc  startup_msp432e401y_ewarm.o [1]
+time1                   0x2000008c    0x4  Data  Gb  gpt.o [1]
+timer_cnt1              0x200000c0    0x4  Data  Gb  Sonar.o [1]
+timer_cnt2              0x200000c4    0x4  Data  Gb  Sonar.o [1]
+uart_init               0x00001b27   0x7a  Code  Gb  UART.o [1]
+variable_l              0x2000009c    0x4  Data  Gb  PID.o [1]
+variable_r              0x200000a0    0x4  Data  Gb  PID.o [1]
+
+
+[1] = D:\Desktop\DY_chassis\DY_CAR_SONAR_RANGE\Debug\Obj
+[2] = command line
+[3] = dl7M_tln.a
+[4] = m7M_tls.a
+[5] = msp432e4_driverlib.a
+[6] = rt7M_tl.a
+[7] = shb_l.a
+
+  8 512 bytes of readonly  code memory
+    592 bytes of readonly  data memory
+  1 252 bytes of readwrite data memory
+
+Errors: none
+Warnings: none
