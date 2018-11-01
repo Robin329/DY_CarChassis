@@ -1,0 +1,120 @@
+/* DriverLib Includes */
+#include <ti/devices/msp432e4/driverlib/driverlib.h>
+
+/* Standard Includes */
+#include <stdint.h>
+#include <stdbool.h>
+#include <gpt.h>
+#include <PID.h>
+#include <pwm.h>
+
+uint32_t count = 0;
+//uint32_t count1 = 0;
+//uint32_t count2 = 0;
+
+uint32_t CNT1 = 0;
+uint32_t CNT2 = 0;
+int speed = 0;
+uint32_t time1 = 0;
+
+void TIMER2B_IRQHandler(void)
+{
+    uint32_t getTimerInterrupt;
+
+    count++;//脉冲计数
+//    count1 = MAP_TimerValueGet(TIMER2_BASE,TIMER_B);
+//    count2 = MAP_TimerLoadGet(TIMER2_BASE,TIMER_B);
+    
+    /* Get timer interrupt status  and clear the same */
+    getTimerInterrupt = MAP_TimerIntStatus(TIMER2_BASE, true);
+    MAP_TimerIntClear(TIMER2_BASE, getTimerInterrupt);
+}
+
+void TIMER1A_IRQHandler(void)
+{
+    uint32_t getTimerInterrupt;
+
+//    CNT1 = count;
+//    CNT2 = CNT1;
+//    speed = ((CNT1 - CNT2)/506) * 6000;
+//    count = 0;
+    
+    time1++;//计时，每10ms增1
+    if(time1 == 10){  
+      CNT1 = count;
+    }if(time1 == 20){
+      
+      CNT2 = count;
+      //count1 = CNT2 -  CNT1;
+      speed = (int)(((CNT2 - CNT1)/506.0) * 600);
+      //count = 0;
+      time1 = 0;
+      count = 0;
+    }
+    
+//    s_r = speed;
+//    pid_r = IncPIDCalc_r(s_r);
+//    pid_r *= 0.01;
+//    pwm_pidr += pid_r;
+//    if(pwm_pidr > 0.99){
+//      
+//      pwm_pidr = 0.99;
+//      
+//    }
+//    
+//    PWM_init(pwm_pidl,0.8);
+    
+    /* Get timer interrupt status  and clear the same */
+    getTimerInterrupt = MAP_TimerIntStatus(TIMER1_BASE, true);
+    MAP_TimerIntClear(TIMER1_BASE, getTimerInterrupt);
+
+}
+
+
+void GPT_init(void)
+{
+
+    MAP_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOA);
+
+        while(!(SysCtlPeripheralReady(SYSCTL_PERIPH_GPIOA)))
+    {
+    }
+        /* Configure the GPIO PA7 as Timer-3 CCP1 pin */
+    MAP_GPIOPinConfigure(GPIO_PA5_T2CCP1);
+    MAP_GPIOPinTypeTimer(GPIO_PORTA_BASE, GPIO_PIN_5);
+    MAP_SysCtlPeripheralEnable(SYSCTL_PERIPH_TIMER2);
+    while(!(SysCtlPeripheralReady(SYSCTL_PERIPH_TIMER2)))
+    {
+    }
+
+     MAP_SysCtlPeripheralEnable(SYSCTL_PERIPH_TIMER1);
+    while(!(SysCtlPeripheralReady(SYSCTL_PERIPH_TIMER1)))
+    {
+    }
+    
+    MAP_TimerConfigure(TIMER2_BASE, TIMER_CFG_SPLIT_PAIR | TIMER_CFG_B_CAP_TIME_UP);
+    MAP_TimerIntEnable(TIMER2_BASE, TIMER_CAPB_EVENT);
+    MAP_TimerControlEvent(TIMER2_BASE, TIMER_B, TIMER_EVENT_POS_EDGE);
+      
+
+    MAP_TimerConfigure(TIMER1_BASE, TIMER_CFG_SPLIT_PAIR | TIMER_CFG_A_PERIODIC);
+    MAP_TimerIntEnable(TIMER1_BASE, TIMER_TIMA_TIMEOUT);
+    
+    /* Since the 16-bit timer can count only 65536 value, we use the pre
+     * scaler of 256 to divide down the count rate by 256. Thus the actual
+     * count load is16e6/256 = 62500. Now when to count at 0.1 sec the
+     * load value in the timer would be 62500 * 0.1 =6250. */
+    MAP_TimerPrescaleSet(TIMER1_BASE, TIMER_A, 255);
+    MAP_TimerLoadSet(TIMER1_BASE, TIMER_A, 625);//10ms
+    /* Enable Timer Interrupt */
+    MAP_IntEnable(INT_TIMER2B);
+    
+    MAP_IntEnable(INT_TIMER1A);
+
+    /* Enable the timer count */
+    MAP_TimerEnable(TIMER2_BASE, TIMER_B);
+    
+    MAP_TimerEnable(TIMER1_BASE, TIMER_A);
+
+
+}
